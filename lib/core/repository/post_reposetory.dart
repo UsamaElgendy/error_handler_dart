@@ -7,6 +7,8 @@ import '../../model/post_model.dart';
 
 class PostRepository {
   final httpClient = ApiServices();
+
+  /// get one post
   Future<Post> getOnePost() async {
     try {
       final responseBody = await httpClient.getResponseBody();

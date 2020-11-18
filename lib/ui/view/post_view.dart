@@ -29,11 +29,11 @@ class _HomeState extends State<PostView> {
                 } else if (notifier.state == NotifierState.loading) {
                   return CircularProgressIndicator();
                 } else {
-                  if (notifier.failure != null) {
-                    return StyledText(notifier.failure.toString());
-                  } else {
-                    return StyledText(notifier.post.toString());
-                  }
+                  return notifier.post.fold(
+                    (failure) => StyledText(failure.toString()),
+                    (post) => StyledText(post.toString()),
+                  );
+                  // return StyledText(notifier.post.toString());
                 }
               },
             ),
